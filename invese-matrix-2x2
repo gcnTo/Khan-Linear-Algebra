@@ -1,0 +1,31 @@
+matrix = [[0,0],[0,0]]
+
+# For checking the dimensions of a matrix:
+#print(len(matrix))
+#print(len(matrix[0]))
+
+for i in range(2): 
+     for j in range(2):
+         matrix[i][j] = int(input("Enter Matrix Position" + str([i+1, j+1]) + ":\n "))
+
+a = matrix[0][0]
+b = matrix[0][1]
+c = matrix[1][0]
+d = matrix[1][1]
+
+determinant = a * d - b * c
+matrix_constant = determinant ** -1
+inverse = [[0,0],[0,0]]
+
+for k in range(2):
+    for l in range(2):
+        if (k == 0 and l == 0):
+            inverse[0][0] = matrix_constant * matrix[1][1]
+        elif (k == 1 and l == 1):
+            inverse[1][1] = matrix_constant * matrix[0][0]
+        elif (k == 0 and l == 1):
+            inverse[0][1] = matrix_constant * (matrix[0][1] * -1)
+        elif (k == 1 and l == 0):
+            inverse[1][0] = matrix_constant * (matrix[1][0] * -1)
+
+print(inverse)
